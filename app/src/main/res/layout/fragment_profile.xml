@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.ProfileFragment">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image_profile"
+        android:layout_width="122dp"
+        android:layout_height="133dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/ic_profile_2" />
+
+    <ImageView
+        android:id="@+id/prof_camera"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/image_profile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-20dp"
+        android:src="@mipmap/ic_prof_camera" />
+    
+    <TextView
+        android:id="@+id/prof"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/prof_camera"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/antic"
+        android:textStyle="bold"
+        android:text="Profile"
+        android:textSize="25dp"
+        android:textColor="@color/colorBlack"
+        android:drawableRight="@drawable/ic_edit"
+        android:drawablePadding="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/prof"
+        android:text="Username"
+        android:textSize="18dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="20dp"/>
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="320dp"
+        android:layout_marginLeft="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/username"
+        android:text="Email"
+        android:textSize="18dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="20dp"/>
+
+    <EditText
+        android:id="@+id/email"
+        android:inputType="textEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="422dp"
+        android:layout_marginLeft="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/email"
+        android:text="Birth Date"
+        android:textSize="18dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="20dp"/>
+
+    <EditText
+        android:id="@+id/dob"
+        android:inputType="date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="525dp"
+        android:layout_marginLeft="16dp"/>
+
+</RelativeLayout>

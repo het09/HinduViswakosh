@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.PhotoFragment">
+
+    <ImageView
+        android:id="@+id/folder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_folder"
+        android:layout_marginTop="160dp"/>
+
+    <Button
+        android:id="@+id/takePhoto"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginRight="130dp"
+        android:layout_below="@+id/folder"
+        android:background="@drawable/button_background"
+        android:drawableRight="@drawable/ic_camera"
+        android:drawablePadding="6dp"
+        android:padding="10dp"
+        android:text="Take Photo"
+        android:textColor="@android:color/background_light" />
+
+
+    <Button
+        android:id="@+id/uploadPhoto"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginRight="130dp"
+        android:layout_below="@+id/takePhoto"
+        android:background="@drawable/button_background"
+        android:drawableRight="@drawable/ic_gallery"
+        android:drawablePadding="6dp"
+        android:padding="10dp"
+        android:text="Upload Photo"
+        android:textColor="@android:color/background_light" />
+
+    <Button
+        android:id="@+id/ScanSearch"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="190dp"
+        android:background="@drawable/button_background"
+        android:drawablePadding="6dp"
+        android:padding="10dp"
+        android:text="Search"
+        android:textColor="@android:color/background_light" />
+
+
+</RelativeLayout>

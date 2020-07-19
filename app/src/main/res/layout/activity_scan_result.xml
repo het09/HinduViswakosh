@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ScanResultActivity">
+
+    <ImageView
+        android:id="@+id/result_photo"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="60dp"/>
+
+    <RelativeLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shiva"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:fontFamily="@font/antic"
+            android:textColor="@color/colorBlack"/>
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:layout_margin="10dp"
+            android:text="Shiva (or Siva) is one of the most important gods in the Hindu pantheon and, along with Brahma and Vishnu, is considered a member of the holy trinity (trimurti) of Hinduism. A complex character, he may represent goodness, benevolence and serve as the Protector but he also has a darker side as the leader of evil spirits, ghosts and vampires and as the master of thieves, villains and beggars. He is also associated with Time, and particularly as the destroyer of all things. Nevertheless, Shiva is also associated with creation. In Hinduism, the universe is thought to regenerate in cycles (every 2,160,000,000 years). Shiva destroys the universe at the end of each cycle which then allows for a new Creation. Shiva is also the great ascetic, abstaining from all forms of indulgence and pleasure, concentrating rather on meditation as a means to find perfect happiness. He is the most important Hindu god for the Shaivism sect, the patron of Yogis and Brahmins, and also the protector of the Vedas, the sacred texts. "/>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>
