@@ -98,7 +98,6 @@
         android:layout_marginTop="50dp"
         android:layout_gravity="left"
         android:background="@drawable/button_background"
-        android:onClick="registerUser"
         android:padding="10dp"
         android:text="Sign Up"
         android:textColor="@android:color/background_light" />

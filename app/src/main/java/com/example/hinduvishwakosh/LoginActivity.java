@@ -5,15 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hinduvishwakosh.Model.UserModel;
 import com.example.hinduvishwakosh.Retrofit.ApiClient;
 import com.example.hinduvishwakosh.Retrofit.ApiInterface;
+import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,22 +51,56 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
             }
         });
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                loginUser();
+            }
+        });
     }
 
-    public void loginUser(View view){
+    public void loginUser(){
 
         ProgressDialog dialog = new ProgressDialog(this);
         dialog.setMessage("Please Wait!!!!");
         dialog.show();
 
-        Call<UserModel> userModelCall = apiInterface.loginUser(email.getText().toString(),
-                                                                password.getText().toString());
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("email", email.getText().toString());
+        jsonObject.addProperty("password", password.getText().toString());
+
+
+        Call<UserModel> userModelCall = apiInterface.loginUser(jsonObject);
 
         userModelCall.enqueue(new Callback<UserModel>() {
             @Override
             public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-                Toast.makeText(LoginActivity.this, "Logged in Successfully!!!", Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
+
+                    if (!response.isSuccessful()) {
+                        Toast.makeText(LoginActivity.this, "Error: " + response.body(), Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                        return;
+                    }
+
+                        UserModel userModelLogin = response.body();
+                        //if(userModelLogin.isSuccess()) {
+
+                            Toast.makeText(LoginActivity.this, "Logged in Successfully!!!" + response.body().getToken(), Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        //}
+                        /*else
+                        {
+                            Toast.makeText(LoginActivity.this, "Username or password Incorrect(:" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        }*/
+
+
+
             }
 
             @Override

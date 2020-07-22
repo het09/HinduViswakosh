@@ -17,6 +17,11 @@ import android.widget.Toast;
 import com.example.hinduvishwakosh.Model.UserModel;
 import com.example.hinduvishwakosh.Retrofit.ApiClient;
 import com.example.hinduvishwakosh.Retrofit.ApiInterface;
+import com.google.gson.JsonObject;
+
+import org.json.JSONObject;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,21 +37,24 @@ public class SignUpActivity extends AppCompatActivity {
     private Button signUp;
     private RadioGroup gender;
     ApiInterface apiInterface;
+    private Object View;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        
 
         username = findViewById(R.id.username);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         dob = findViewById(R.id.dob);
+        gender = findViewById(R.id.gender);
         loginUser = findViewById(R.id.login_user);
         signUp = findViewById(R.id.signUp);
-        gender = findViewById(R.id.gender);
 
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+
 
         loginUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,40 +63,45 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SignUpActivity.this, MainActivity.class));
+                registerUser();
             }
         });
 
     }
 
 
-    public void registerUser(View view){
+
+    public void registerUser(){
 
         ProgressDialog dialog = new ProgressDialog(this);
         dialog.setMessage("Please Wait!!!!");
         dialog.show();
 
-        Call<UserModel> userModelCall = apiInterface.registerUser(dob.getText().toString(),
-                email.getText().toString(),
-                ((RadioButton)findViewById(gender.getCheckedRadioButtonId())).getText().toString(),
-                password.getText().toString(),
-                username.getText().toString());
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("dob", dob.getText().toString());
+        jsonObject.addProperty("email", email.getText().toString());
+        jsonObject.addProperty("gender", ((RadioButton)findViewById(gender.getCheckedRadioButtonId())).getText().toString());
+        jsonObject.addProperty("password", password.getText().toString());
+        jsonObject.addProperty("user_name", username.getText().toString());
+
+        Call<UserModel> userModelCall = apiInterface.registerUser(jsonObject);
 
         userModelCall.enqueue(new Callback<UserModel>() {
             @Override
             public void onResponse(Call<UserModel> call, Response<UserModel> response) {
 
                 if(!response.isSuccessful()){
-                    Toast.makeText(SignUpActivity.this, "Error: "+ response.body(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Error: "+ response.body(), Toast.LENGTH_LONG).show();
                     dialog.dismiss();
                     return;
                 }
 
                 UserModel userModelResponse = response.body();
-                Toast.makeText(SignUpActivity.this, "User Registered Successfully!! ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUpActivity.this, "User Registered Successfully!! " +response.body().getToken(), Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
 
 

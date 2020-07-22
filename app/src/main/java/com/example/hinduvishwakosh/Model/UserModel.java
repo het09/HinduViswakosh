@@ -1,8 +1,7 @@
 package com.example.hinduvishwakosh.Model;
 
+import com.example.hinduvishwakosh.SignUpActivity;
 import com.google.gson.annotations.SerializedName;
-
-import retrofit2.http.FormUrlEncoded;
 
 public class UserModel {
 
@@ -90,7 +89,17 @@ public class UserModel {
 
 
     public boolean isSuccess() {
+        /*if(password.equals(true))
+        {
+            getToken();
+        }
+        else
+        {
+            getMessage();
+        }*/
 
-        return false;
+        return true;
     }
+
+
 }

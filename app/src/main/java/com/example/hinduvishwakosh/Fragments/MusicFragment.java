@@ -10,12 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.hinduvishwakosh.Adapter.MusicAdapter;
 import com.example.hinduvishwakosh.MediaPlayerActivity;
 import com.example.hinduvishwakosh.Model.MusicModel;
 import com.example.hinduvishwakosh.R;
+import com.google.gson.JsonArray;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -26,12 +29,17 @@ public class MusicFragment extends Fragment {
     ListView SongList;
     ArrayList<MusicModel> arrayList;
     ArrayAdapter<String> arrayAdapter;
+    TextView ArtistName , MusicName;
+    ImageView God_GoddessPhoto;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view= inflater.inflate(R.layout.fragment_music, container, false);
+
+        ArtistName = view.findViewById(R.id.artist);
+        MusicName = view.findViewById(R.id.music_name);
 
 
         arrayList = new ArrayList<MusicModel>();
@@ -58,9 +66,16 @@ public class MusicFragment extends Fragment {
 
             }
         };
+
         SongList.setOnItemClickListener(adapterViewListener);
 
         return view;
+    }
+
+    public void getPrayers(){
+
+        JsonArray jsonArray = new JsonArray();
+
     }
 
 }
